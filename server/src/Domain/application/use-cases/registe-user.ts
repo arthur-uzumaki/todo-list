@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { User } from '@/Domain/application/entities/user'
 import { UserRepository } from '@/Domain/application/repositories/user-repository'
 import { HashGenerator } from '@/Domain/application/cryptography/hash-generator'
+import { BadRequest } from '@/Domain/application/use-cases/_errors/bad-request'
 
 interface RegisterUserRequest {
   name: string
@@ -25,6 +26,13 @@ export class RegisterUser {
     password,
     username,
   }: RegisterUserRequest): Promise<RegisterUserResponse> {
+    const isValidateUsername =
+      await this.userRepository.findByUsername(username)
+
+    if (isValidateUsername) {
+      throw new BadRequest('username already registered. ')
+    }
+
     const hashedPassword = await this.hasGenerator.has(password)
 
     const user = User.create({
