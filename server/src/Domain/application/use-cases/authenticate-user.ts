@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { HashCompare } from '@/Domain/application/cryptography/hash-comparer'
 import { UserRepository } from '@/Domain/application/repositories/user-repository'
 import { Encrypter } from '@/Domain/application/cryptography/encrypter'
+import { BadRequest } from '@/Domain/application/use-cases/_errors/bad-request'
 
 interface AuthenticateUserRequest {
   username: string
@@ -30,6 +31,10 @@ export class AuthenticateUser {
       password,
       user.password,
     )
+
+    if (!isPasswordValid) {
+      throw new BadRequest('password invalid')
+    }
 
     const accessToken = await this.encrypt.encrypt({
       sub: user.id.toString(),
