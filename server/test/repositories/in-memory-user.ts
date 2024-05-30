@@ -4,6 +4,10 @@ import { UserRepository } from '@/Domain/application/repositories/user-repositor
 export class InMemoryUser implements UserRepository {
   public user: User[] = []
 
+  async findById(userId: string): Promise<User | null> {
+    return this.user.find((item) => item.id.toString() === userId)
+  }
+
   async create(user: User): Promise<void> {
     this.user.push(user)
   }
