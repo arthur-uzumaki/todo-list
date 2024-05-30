@@ -27,6 +27,9 @@ export class AuthenticateUser {
   }: AuthenticateUserRequest): Promise<AuthenticateUserResponse> {
     const user = await this.userRepository.findByUsername(username)
 
+    if (!user) {
+      throw new BadRequest('username invalid, checks the username.')
+    }
     const isPasswordValid = await this.hashCompare.compare(
       password,
       user.password,
