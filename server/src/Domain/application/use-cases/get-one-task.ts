@@ -1,6 +1,7 @@
 import { TaskRepository } from '@/Domain/application/repositories/task-repository'
 import { Task } from '@/Domain/application/entities/task'
 import { BadRequest } from '@/Domain/application/use-cases/_errors/bad-request'
+import { Injectable } from '@nestjs/common'
 
 interface GetOneTaskRequest {
   taskId: string
@@ -9,6 +10,7 @@ interface GetOneTaskRequest {
 interface GetOneTaskResponse {
   task: Task
 }
+@Injectable()
 export class GetOneTask {
   constructor(private readonly taskRepository: TaskRepository) {}
 
