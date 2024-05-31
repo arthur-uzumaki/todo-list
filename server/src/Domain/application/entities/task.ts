@@ -2,7 +2,8 @@ import { Entity } from '@/core/entities/entity'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Replace } from '@/utils/replace'
 import { Description } from './valueObject/description'
-interface TaskProps {
+
+export interface TaskProps {
   userId: UniqueEntityId
   title: string
   description: Description
