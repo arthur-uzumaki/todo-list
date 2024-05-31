@@ -4,7 +4,7 @@ import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 
 type Override = Partial<TaskProps>
 
-export function MakeTask(override: Override = {}) {
+export function makeTask(override: Override = {}) {
   return Task.create({
     userId: new UniqueEntityId(),
     title: 'Gravação de aula',
@@ -12,7 +12,7 @@ export function MakeTask(override: Override = {}) {
       'Tarefa para gravar aula de Tasks do Curso de Nestjs',
     ),
     priority: 'Alta',
-    startAt: new Date('31/10/2024'),
+    startAt: new Date('03/11/2024'),
     endAt: new Date('04/11/2024'),
     ...override,
   })
