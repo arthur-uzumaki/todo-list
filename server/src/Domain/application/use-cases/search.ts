@@ -18,7 +18,7 @@ export class Search {
   async execute({ title }: SearchRequest): Promise<SearchResponse> {
     const tasks = await this.taskRepository.findManyTaskSearch(title)
 
-    if (!tasks) {
+    if (tasks.length === 0) {
       throw new BadRequest('Search not found')
     }
 
