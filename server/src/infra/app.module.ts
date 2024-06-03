@@ -1,8 +1,17 @@
 import { Module } from '@nestjs/common'
-import { DatabasesModule } from '@/infra/databases/databases.module'
 import { HttpModule } from '@/infra/http/http.module'
+import { AuthModule } from './auth/auth.module'
+import { ConfigModule } from '@nestjs/config'
+import { envSchema } from '@/infra/env/env'
 
 @Module({
-  imports: [DatabasesModule, HttpModule],
+  imports: [
+    ConfigModule.forRoot({
+      validate: (env) => envSchema.parse(env),
+      isGlobal: true,
+    }),
+    HttpModule,
+    AuthModule,
+  ],
 })
 export class AppModule {}
