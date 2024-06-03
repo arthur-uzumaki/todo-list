@@ -9,7 +9,8 @@ import { JwtEncrypter } from '@/infra/cryptography/jwt-encrypter'
   providers: [
     { provide: HashCompare, useClass: CryptographyHasher },
     { provide: HashGenerator, useClass: CryptographyHasher },
+    { provide: Encrypter, useClass: JwtEncrypter },
   ],
-  exports: [HashCompare, HashGenerator],
+  exports: [HashCompare, HashGenerator, Encrypter],
 })
 export class CryptographyModule {}
