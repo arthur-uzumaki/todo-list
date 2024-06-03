@@ -3,16 +3,14 @@ import { PrismaClient } from '@prisma/client'
 import { execSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
 
-const env = envSchema.parse(process.env)
-
 const prismaClient = new PrismaClient()
 
 function generateUniqueDatabaseURL(schemaId: string) {
-  if (!env.DATABASE_URL) {
+  if (!process.env.DATABASE_URL) {
     throw new Error('Please provider a DATABASE_URL environment variable')
   }
 
-  const url = new URL(env.DATABASE_URL)
+  const url = new URL(process.env.DATABASE_URL)
   url.searchParams.set('schema', schemaId)
 
   return url.toString()
