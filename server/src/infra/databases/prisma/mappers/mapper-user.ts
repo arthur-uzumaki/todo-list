@@ -4,7 +4,7 @@ import { User as UserRaw } from '@prisma/client'
 export class MapperUser {
   static toPrisma(user: User) {
     return {
-      id: user.id,
+      id: user.id.toString(),
       name: user.name,
       username: user.username,
       password: user.password,
