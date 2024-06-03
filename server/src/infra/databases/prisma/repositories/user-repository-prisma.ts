@@ -36,7 +36,7 @@ export class UserRepositoryPrisma implements UserRepository {
       },
     })
 
-    if (!username) {
+    if (!user) {
       return null
     }
 
