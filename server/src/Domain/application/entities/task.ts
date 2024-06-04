@@ -10,7 +10,7 @@ export interface TaskProps {
   startAt: Date
   endAt: Date
   priority: string
-  createAt: Date
+  createdAt: Date
 }
 
 export class Task extends Entity<TaskProps> {
@@ -58,18 +58,18 @@ export class Task extends Entity<TaskProps> {
     this.props.priority = priority
   }
 
-  public get createAt(): Date {
-    return this.props.createAt
+  public get createdAt(): Date {
+    return this.props.createdAt
   }
 
   static create(
-    props: Replace<TaskProps, { createAt?: Date }>,
+    props: Replace<TaskProps, { createdAt?: Date }>,
     id?: UniqueEntityId,
   ) {
     const task = new Task(
       {
         ...props,
-        createAt: props.createAt ?? new Date(),
+        createdAt: props.createdAt ?? new Date(),
       },
       id,
     )

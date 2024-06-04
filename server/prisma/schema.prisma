@@ -12,4 +12,21 @@ model User {
   name     String
   username String @unique
   password String
+  tasks    Task[]
+
+  @@map("users")
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  priority    String
+  startAt     DateTime
+  endAt       DateTime
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("tasks")
 }
