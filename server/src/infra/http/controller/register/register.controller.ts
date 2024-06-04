@@ -1,4 +1,5 @@
 import { RegisterUser } from '@/Domain/application/use-cases/registe-user'
+import { Public } from '@/infra/auth/public'
 import { ZodValidadePipes } from '@/infra/pipes/zod-validade-pipe'
 import { Body, Controller, Post } from '@nestjs/common'
 import { z } from 'zod'
@@ -18,6 +19,7 @@ export class RegisterController {
   constructor(private readonly register: RegisterUser) {}
 
   @Post()
+  @Public()
   async create(@Body(pipes) body: UserSchema) {
     const { name, username, password } = body
 
