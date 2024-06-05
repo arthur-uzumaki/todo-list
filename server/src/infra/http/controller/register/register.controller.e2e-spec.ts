@@ -2,6 +2,7 @@ import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { AppModule } from '@/infra/app.module'
 import request from 'supertest'
+import { hash } from 'bcryptjs'
 
 describe('CREATE user register (E2E)', () => {
   let app: INestApplication
@@ -22,7 +23,7 @@ describe('CREATE user register (E2E)', () => {
       .send({
         name: 'John Doe',
         username: 'john_where',
-        password: '123456',
+        password: await hash('123456', 8),
       })
     expect(response.statusCode).toBe(201)
   })
