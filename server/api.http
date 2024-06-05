@@ -1,5 +1,6 @@
 @baseUrl = http://localhost:3333
 
+
 POST {{baseUrl}}/registers
 Content-Type: application/json
 
@@ -17,4 +18,20 @@ Content-Type: application/json
 {
   "username": "ronaldo",
   "password": "123mudar"
+}
+
+
+###
+
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzY2MyMTU0Yi00ZDc4LTQ1ZmQtYmMyNS0zN2ZkZWRlMGY1MmUiLCJpYXQiOjE3MTc1OTk3NDQsImV4cCI6MTcxNzYwMzM0NH0.xq6cjJyDfCv-5ixwNICEFjWnIQCFstmX-fv1C4NTYKbBx5WrK5dzR4x8bbgDYDfApZ11FdKt095VKOjKn_qccjpEebivtTWhjAu-2JdwyhxLM_2QJo_m6lhtiJkIpWI491yl9bQpWF43xYHu6TpdBxnzJ1ivEteKaEGkOkDLRBUX_Rj-Tvl7wgYL3TRKBWxAU7kc2Bj6o_b30fJt0OqfjEO2LBcEEIjQP3dF1hDxvLWF2XCsjhpN8DrghazA4Jxy6z-XaGxmqqmKFTztxDukwVNLgTxFZqiUeY1FdHFwgAjsUy59ZjFbyMDwjKukSVftHOOee8IPHJFHNkTptcgy9Q
+
+{
+  "title": "Chamada com o Cliente",
+  "description": "Atualizar o cliente sobre o progresso do projeto",
+  "startAt": "2024-06-13T11:00:00",
+  "endAt": "2024-06-13T12:00:00",
+  "priority": "Alta"
+
 }
