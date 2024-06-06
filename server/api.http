@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:3333
 @authToken = {{authenticate.response.body.access_token}}
 
-
+# @name register-users
 POST {{baseUrl}}/registers
 Content-Type: application/json
 
@@ -24,6 +24,7 @@ Content-Type: application/json
 
 ###
 
+# @name create-tasks
 POST {{baseUrl}}/tasks
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
@@ -36,3 +37,9 @@ Authorization: Bearer {{authToken}}
   "priority": "Alta"
 
 }
+
+###
+
+# @name fetch-tasks
+GET {{baseUrl}}/tasks
+Authorization: Bearer {{authToken}}
