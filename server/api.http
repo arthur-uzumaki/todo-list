@@ -43,3 +43,9 @@ Authorization: Bearer {{authToken}}
 # @name fetch-tasks
 GET {{baseUrl}}/tasks
 Authorization: Bearer {{authToken}}
+
+###
+
+# @name fetch-one-task
+GET {{baseUrl}}/tasks/448d59fb-7ef1-45cc-be76-81426febcbe7
+Authorization: Bearer {{authToken}}

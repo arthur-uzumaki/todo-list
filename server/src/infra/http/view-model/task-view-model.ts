@@ -3,6 +3,7 @@ import { Task } from '@/Domain/application/entities/task'
 export class TaskViewModel {
   static toViewModel(task: Task) {
     return {
+      id: task.id.toString(),
       userId: task.userId.toString(),
       title: task.title,
       description: task.description.value,
