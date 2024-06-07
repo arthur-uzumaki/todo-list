@@ -30,10 +30,10 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "Planejamento de Marketing",
-  "description": "Criar um plano de marketing para o próximo trimestre",
-  "startAt": "2024-07-17T11:00:00",
-  "endAt": "2024-07-25T12:15:00",
+  "title": "Atualizar Website",
+  "description": "Atualizar o conteúdo do website da empresa",
+  "startAt": "2024-06-18T09:00:00",
+  "endAt": "2024-06-18T11:00:00",
   "priority": "Alta"
 
 }
@@ -48,4 +48,9 @@ Authorization: Bearer {{authToken}}
 
 # @name fetch-one-task
 GET {{baseUrl}}/tasks/448d59fb-7ef1-45cc-be76-81426febcbe7
+Authorization: Bearer {{authToken}}
+
+###
+# @name search-tasks
+GET {{baseUrl}}/tasks/search/title?title=planejamento
 Authorization: Bearer {{authToken}}

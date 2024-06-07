@@ -39,7 +39,7 @@ export class TaskRepositoryPrisma implements TaskRepository {
       },
     })
 
-    if (tasks.length === 0) {
+    if (!tasks) {
       return null
     }
 
