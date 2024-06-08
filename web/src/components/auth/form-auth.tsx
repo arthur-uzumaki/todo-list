@@ -1,46 +1,92 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { HTMLProps } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-interface FormAuthProps extends HTMLProps<HTMLFormElement> {
+export const userSchema = z.object({
+  name: z.string().min(6, 'Precisa colocar seu nome completo').optional(),
+  username: z.string().min(1, 'Precisa colocar username'),
+  password: z.string().min(6, 'Precisa colocar pelo menos 6 caracteres'),
+})
+
+export type UserSchema = z.infer<typeof userSchema>
+
+interface FormAuthProps {
   labelName?: string
   labelUsername: string
   labelPassword: string
   buttonName: string
+  method: (data: UserSchema) => void
 }
 export function FormAuth({
   labelName,
   labelUsername,
   labelPassword,
   buttonName,
-  ...rest
+  method,
 }: FormAuthProps) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<UserSchema>({
+    resolver: zodResolver(userSchema),
+  })
+
   return (
     <form
       className="max-w-sm gap-4 mt-10 flex items-stretch flex-col w-full"
-      {...rest}
+      onSubmit={handleSubmit(method)}
     >
       {labelName && (
         <div className="w-full  flex flex-col gap-4">
-          <Label>{labelName}</Label>
-          <Input placeholder="Digite seu nome" />
+          <Label htmlFor="name">{labelName}</Label>
+          <Input
+            placeholder="Digite seu nome"
+            id="name"
+            {...register('name')}
+          />
+
+          {errors.name && (
+            <span className="text-red-400">{errors.name.message}</span>
+          )}
         </div>
       )}
 
       <div className="w-full  flex flex-col gap-4">
-        <Label>{labelUsername}</Label>
-        <Input placeholder="Digite seu username" />
+        <Label htmlFor="username">{labelUsername}</Label>
+        <Input
+          placeholder="Digite seu username"
+          id="username"
+          {...register('username')}
+        />
+
+        {errors.username && (
+          <span className="text-red-400">{errors.username.message}</span>
+        )}
       </div>
 
       <div className=" w-full flex flex-col gap-4">
-        <Label>{labelPassword}</Label>
-        <Input type="password" placeholder="*************" />
+        <Label htmlFor="password">{labelPassword}</Label>
+        <Input
+          type="password"
+          placeholder="*************"
+          id="password"
+          {...register('password')}
+        />
+
+        {errors.password && (
+          <span className="text-red-400">{errors.password.message}</span>
+        )}
       </div>
 
       <Button
         className="leading-relaxed text-lg font-bold bg-violet-500
-   transition-colors duration-1000 hover:bg-violet-700 "
+   transition-colors duration-500 hover:bg-violet-700 "
+        type="submit"
       >
         {buttonName}
       </Button>

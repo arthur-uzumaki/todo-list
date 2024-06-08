@@ -1,5 +1,5 @@
+import { LoginUSer } from '@/components/auth/login-user'
 import { BackgroundDiv } from '@/components/backgroundDiv'
-import { FormAuth } from '@/components/auth/form-auth'
 import Link from 'next/link'
 
 export default function SignIn() {
@@ -8,12 +8,7 @@ export default function SignIn() {
       <BackgroundDiv />
       <div>
         <h1 className="text-3xl font-bold">Login</h1>
-
-        <FormAuth
-          labelUsername="Digite seu username"
-          labelPassword="Password"
-          buttonName="Login"
-        />
+        <LoginUSer />
         <Link className="flex gap-1 text-zinc-400 mt-5 " href="/sing-up">
           Não possui conta? <span className="underline ">cria uma agora</span>
         </Link>
