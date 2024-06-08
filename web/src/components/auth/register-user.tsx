@@ -1,22 +1,22 @@
 'use client'
 import { FormAuth, UserSchema } from '@/components/auth/form-auth'
+import { useToast } from '../ui/use-toast'
 import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
-import { useToast } from '../ui/use-toast'
-import Cookies from 'js-cookie'
-export function LoginUSer() {
+
+export function RegisterUser() {
   const { toast } = useToast()
   const route = useRouter()
 
-  async function handleLoginUser(handleLoginUser: UserSchema) {
+  async function handleRegisterUsers(data: UserSchema) {
     try {
       const validateOneHors = 60 * 60
-      const response = await api('/sessions', {
+      const response = await api('/registers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(handleLoginUser),
+        body: JSON.stringify(data),
         next: {
           revalidate: validateOneHors,
         },
@@ -26,33 +26,35 @@ export function LoginUSer() {
         return toast({
           variant: 'destructive',
           title: 'Credenciais inválidas',
-          description: 'Por favor verifica seu username e senha',
+          description: 'Por favor verifica todos os campos',
         })
       }
-
-      const { access_token } = await response.json()
-
-      console.log(access_token)
-
-      Cookies.set('accessToken', access_token)
-
-      return route.push('/')
+      if (response.status === 201) {
+        route.push('/sign-in')
+        return toast({
+          variant: 'default',
+          title: 'Cadastro realizado com sucesso',
+          description: 'Registro salvo com sucesso no banco de dados ',
+        })
+      }
     } catch (error) {
-      console.error('Erro de conexão:', error)
+      console.error(error)
 
       return toast({
         variant: 'destructive',
         title: 'Erro de conexão',
-        description: 'Não foi possível conectar ao servidor',
+        description: 'Não foi possível conectar com servidor',
       })
     }
   }
+
   return (
     <FormAuth
-      method={handleLoginUser}
-      labelUsername="Digite seu username"
+      method={handleRegisterUsers}
+      labelName="Digite seu Nome completo"
+      labelUsername="Digite seu username "
       labelPassword="Password"
-      buttonName="Login"
+      buttonName="Registrar"
     />
   )
 }

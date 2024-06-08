@@ -1,5 +1,5 @@
+import { RegisterUser } from '@/components/auth/register-user'
 import { BackgroundDiv } from '@/components/backgroundDiv'
-import { FormAuth } from '@/components/auth/form-auth'
 
 export default function SingUp() {
   return (
@@ -7,17 +7,11 @@ export default function SingUp() {
       <BackgroundDiv />
 
       <div>
-        <h1 className="text-3xl font-bold leading-snug ">
+        <h1 className="text-3xl font-bold leading-snug  ">
           {' '}
           Registra um usuário
+          <RegisterUser />
         </h1>
-
-        <FormAuth
-          labelName="Digite seu Nome completo"
-          labelUsername="Digite seu username "
-          labelPassword="Password"
-          buttonName="Registrar"
-        />
       </div>
     </div>
   )

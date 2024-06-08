@@ -51,7 +51,9 @@ export function FormAuth({
           />
 
           {errors.name && (
-            <span className="text-red-400">{errors.name.message}</span>
+            <span className="text-red-400 text-base">
+              {errors.name.message}
+            </span>
           )}
         </div>
       )}
@@ -65,7 +67,9 @@ export function FormAuth({
         />
 
         {errors.username && (
-          <span className="text-red-400">{errors.username.message}</span>
+          <span className="text-red-400 text-base">
+            {errors.username.message}
+          </span>
         )}
       </div>
 
@@ -79,7 +83,9 @@ export function FormAuth({
         />
 
         {errors.password && (
-          <span className="text-red-400">{errors.password.message}</span>
+          <span className="text-red-400 text-base">
+            {errors.password.message}
+          </span>
         )}
       </div>
 
