@@ -56,7 +56,10 @@ export function Header() {
             <DropdownMenuSeparator className="bg-zinc-500" />
 
             <DropdownMenuItem>
-              <Link href="/" className="text-base font-medium text-red-500">
+              <Link
+                href="/api/auth/logout"
+                className="text-base font-medium text-red-500"
+              >
                 Sair
               </Link>
             </DropdownMenuItem>
