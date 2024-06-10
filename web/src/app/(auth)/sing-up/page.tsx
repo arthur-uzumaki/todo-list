@@ -1,9 +1,12 @@
 import { RegisterUser } from '@/components/auth/register-user'
 import { BackgroundDiv } from '@/components/backgroundDiv'
 
+export const metadata = {
+  title: 'Registar',
+}
 export default function SingUp() {
   return (
-    <div className="max-h-[860px]  w-full grid grid-cols-2 gap-20">
+    <main className="max-h-[860px]  w-full grid grid-cols-2 gap-20">
       <BackgroundDiv />
 
       <div>
@@ -13,6 +16,6 @@ export default function SingUp() {
           <RegisterUser />
         </h1>
       </div>
-    </div>
+    </main>
   )
 }
