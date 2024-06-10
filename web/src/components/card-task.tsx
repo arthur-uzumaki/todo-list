@@ -11,8 +11,8 @@ async function fetchTasks() {
     },
   })
 
-  const tasks = await response.json()
-  return tasks
+  const data = await response.json()
+  return data.tasks
 }
 
 export async function CardTasks() {

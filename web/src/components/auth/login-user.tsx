@@ -32,8 +32,6 @@ export function LoginUSer() {
 
       const { access_token } = await response.json()
 
-      console.log(access_token)
-
       Cookies.set('accessToken', access_token)
 
       return route.push('/')
