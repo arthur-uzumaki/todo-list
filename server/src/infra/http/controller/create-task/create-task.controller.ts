@@ -46,10 +46,8 @@ export class CreateTaskController {
   ) {
     const { title, description, endAt, priority, startAt } = body
 
-    const userId = userPayload.sub
-
     const { task } = await this.createTask.execute({
-      userId,
+      userId: userPayload.sub,
       title,
       description,
       startAt: new Date(startAt),

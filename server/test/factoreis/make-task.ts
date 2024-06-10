@@ -6,7 +6,7 @@ type Override = Partial<TaskProps>
 
 export function makeTask(override: Override = {}) {
   return Task.create({
-    userId: new UniqueEntityId(),
+    userId: new UniqueEntityId('8061182d-c356-443b-b639-4e23bcb80747'),
     title: 'Gravação de aula',
     description: new Description(
       'Tarefa para gravar aula de Tasks do Curso de Nestjs',

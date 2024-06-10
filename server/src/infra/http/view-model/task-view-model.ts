@@ -4,7 +4,6 @@ export class TaskViewModel {
   static toViewModel(task: Task) {
     return {
       id: task.id.toString(),
-      userId: task.userId.toString(),
       title: task.title,
       description: task.description.value,
       startAt: task.startAt,

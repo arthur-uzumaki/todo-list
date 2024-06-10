@@ -16,7 +16,7 @@ export class InMemoryTask implements TaskRepository {
     return this.tasks.filter((item) => item.title === title)
   }
 
-  async findAll(): Promise<Task[]> {
-    return this.tasks.map((item) => item)
+  async findAll(userId: string): Promise<Task[]> {
+    return this.tasks.filter((item) => item.userId.toValue() === userId)
   }
 }
