@@ -40,6 +40,7 @@ export class AuthenticateUser {
     }
 
     const accessToken = await this.encrypt.encrypt({
+      username: user.username,
       sub: user.id.toString(),
     })
 
