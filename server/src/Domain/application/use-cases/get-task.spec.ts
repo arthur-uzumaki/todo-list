@@ -16,7 +16,9 @@ describe('get task', () => {
 
     await inMemory.create(task1)
 
-    const { tasks } = await getTask.execute()
+    const { tasks } = await getTask.execute({
+      userId: '8061182d-c356-443b-b639-4e23bcb80747',
+    })
 
     expect(tasks).toHaveLength(1)
     expect(tasks).toEqual(
