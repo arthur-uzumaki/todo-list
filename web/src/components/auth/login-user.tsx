@@ -4,7 +4,7 @@ import { api } from '@/lib/api'
 import { useRouter } from 'next/navigation'
 import { useToast } from '../ui/use-toast'
 import Cookies from 'js-cookie'
-export function LoginUSer() {
+export function LoginUser() {
   const { toast } = useToast()
   const route = useRouter()
 
@@ -49,7 +49,7 @@ export function LoginUSer() {
     <FormAuth
       method={handleLoginUser}
       labelUsername="Digite seu username"
-      labelPassword="Password"
+      labelPassword="Senha"
       buttonName="Login"
     />
   )
