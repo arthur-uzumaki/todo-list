@@ -28,10 +28,10 @@ export async function CardTasks() {
               className="rounded-md text-left  flex flex-col gap-3 m-2 
                   bg-zinc-800 p-5 overflow-hidden transition-all duration-500 hover:scale-105 outline-none hover:ring-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-100 "
             >
-              <div className=" flex flex-1 justify-between gap-2  ">
-                <h1 className="font-bold text-lg leading-tight ">
+              <div className=" flex items-center   justify-between gap-2  ">
+                <h1 className="font-bold text-lg  truncate  ">
                   Title:{' '}
-                  <span className="text-base text-zinc-400 font-medium px-1 leading-tight">
+                  <span className="text-base text-zinc-400   font-medium px-1 leading-tight">
                     {item.title}
                   </span>
                 </h1>
@@ -45,7 +45,7 @@ export async function CardTasks() {
               </div>
 
               <div className="max-w-[380px] flex items-center overflow-hidden">
-                <p className="truncate ">
+                <p className="truncate leading-relaxed ">
                   {' '}
                   <span className="px-1">Descrição:</span>
                   {item.description}

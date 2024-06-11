@@ -25,7 +25,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <ClipboardList className="w-5 h-5 text-zinc-100" />
           <Link
-            href="/"
+            href="/tasks/cadastrar"
             className="underline font-bold leading-relaxed text-sm"
           >
             Mais tarefa

@@ -53,7 +53,7 @@ export function RegisterUser() {
       method={handleRegisterUsers}
       labelName="Digite seu Nome completo"
       labelUsername="Digite seu username "
-      labelPassword="Password"
+      labelPassword="Senha"
       buttonName="Registrar"
     />
   )
