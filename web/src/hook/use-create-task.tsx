@@ -60,7 +60,6 @@ export function useCreateTask() {
         },
 
         body: JSON.stringify(data),
-        cache: 'no-store',
       })
 
       if (response.status !== 201) {

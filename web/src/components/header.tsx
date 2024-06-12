@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import { Input } from './ui/input'
-import { Search, ClipboardList } from 'lucide-react'
+import { ClipboardList } from 'lucide-react'
 import { Separator } from './ui/separator'
 import { Profile } from './profile'
+import { SearchForm } from './search-form'
+import { Suspense } from 'react'
 
 export function Header() {
   return (
@@ -12,13 +13,9 @@ export function Header() {
           devtodo
         </Link>
 
-        <form className="flex w-[320px] gap-3 items-center rounded-full bg-zinc-900 px-5 py-3 ring-zinc-700 ">
-          <Input
-            className="flex-1 text-sm placeholder:text-zinc-500 outline-none bg-transparent border border-transparent focus-visible:border-transparent "
-            placeholder="Buscar tasks...."
-          />
-          <Search className="w-5 h-5 text-zinc-500" />
-        </form>
+        <Suspense fallback={null}>
+          <SearchForm />
+        </Suspense>
       </div>
 
       <div className="flex items-center gap-4 ">
