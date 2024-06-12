@@ -51,6 +51,7 @@ export function useCreateTask() {
 
   async function handleCreateTask(data: TaskSchema) {
     try {
+      const validadeOneHors = 60 * 60
       const accessToken = Cookies.get('accessToken')
       const response = await api('/tasks', {
         method: 'POST',
@@ -60,6 +61,9 @@ export function useCreateTask() {
         },
 
         body: JSON.stringify(data),
+        next: {
+          revalidate: validadeOneHors,
+        },
       })
 
       if (response.status !== 201) {
