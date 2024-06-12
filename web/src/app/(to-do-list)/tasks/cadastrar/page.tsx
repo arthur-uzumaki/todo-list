@@ -1,5 +1,7 @@
 import { BackgroundDiv } from '@/components/backgroundDiv'
 import { CreateTask } from '@/components/create-tasks'
+import { ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Criando nova tarefa',
@@ -8,7 +10,13 @@ export const metadata = {
 export default function Cadastrar() {
   return (
     <main className="max-h-[860px] w-full  grid grid-cols-1 lg:grid-cols-2 gap-20">
-      <div className="mt-10  w-full relative">
+      <div className="mt-10  w-full  relative">
+        <Link href="/">
+          <ArrowLeft
+            className="w-6 h-6 absolute left-4 text-zinc-400  
+          duration-700 transition-colors hover:text-zinc-200  "
+          />
+        </Link>
         <BackgroundDiv />
       </div>
 
