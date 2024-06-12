@@ -32,7 +32,9 @@ export function LoginUser() {
 
       const { access_token } = await response.json()
 
-      Cookies.set('accessToken', access_token)
+      Cookies.set('accessToken', access_token, {
+        expires: validateOneHors / 3600,
+      })
 
       return route.push('/')
     } catch (error) {
