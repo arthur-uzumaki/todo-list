@@ -2,6 +2,7 @@ import { api } from '@/lib/api'
 import { Task } from '@/types/task'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+
 async function fetchTasks() {
   const accessToken = cookies().get('accessToken')?.value
   const response = await api('/tasks', {
@@ -19,14 +20,16 @@ export async function CardTasks() {
   const tasks: Task[] = await fetchTasks()
 
   return (
-    <ul className="grid grid-cols-3 gap-6">
+    <ul className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {tasks.map((item) => {
         return (
           <li key={item.id}>
             <Link
               href={`task/${item.id}`}
               className="rounded-md text-left  flex flex-col gap-3 m-2 
-                  bg-zinc-800 p-5 overflow-hidden transition-all duration-500 hover:scale-105 outline-none hover:ring-zinc-700 focus-visible:ring-2 focus-visible:ring-zinc-100 "
+                  bg-zinc-800 p-5 overflow-hidden transition-all duration-500 
+                  hover:scale-105 outline-none hover:ring-zinc-700 
+                  focus-visible:ring-2 focus-visible:ring-zinc-100 "
             >
               <div className=" flex items-center   justify-between gap-2  ">
                 <h1 className="font-bold text-lg  truncate  ">
