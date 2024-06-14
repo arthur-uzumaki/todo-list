@@ -25,7 +25,7 @@ export async function CardTasks() {
         return (
           <li key={item.id}>
             <Link
-              href={`task/${item.id}`}
+              href={`tasks/${item.id}`}
               className="rounded-md text-left  flex flex-col gap-3 m-2 
                   bg-zinc-800 p-5 overflow-hidden transition-all duration-500 
                   hover:scale-105 outline-none hover:ring-zinc-700 
