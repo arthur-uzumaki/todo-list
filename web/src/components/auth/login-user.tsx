@@ -11,6 +11,7 @@ export function LoginUser() {
   async function handleLoginUser(handleLoginUser: UserSchema) {
     try {
       const validateOneHors = 60 * 60
+      const validadeToken = 30 / (60 * 24)
       const response = await api('/sessions', {
         method: 'POST',
         headers: {
@@ -33,7 +34,7 @@ export function LoginUser() {
       const { access_token } = await response.json()
 
       Cookies.set('accessToken', access_token, {
-        expires: validateOneHors / 3600,
+        expires: validadeToken,
       })
 
       return route.push('/')
