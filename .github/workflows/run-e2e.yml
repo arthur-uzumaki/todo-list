@@ -23,7 +23,6 @@ jobs:
       - name: Get pnpm store directory
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - name: Cache pnpm store
         uses: actions/cache@v3
         with:
@@ -31,7 +30,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
       - name: Cache Cypress binary
         uses: actions/cache@v3
         with:
@@ -39,23 +37,22 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
-
       - name: Install dependencies
-        working-directory: /web
+        working-directory: ./todo-list/web
         run: pnpm install
 
       - name: Install Cypress if missing
         run: npx cypress install
 
       - name: Build application
-        working-directory: /web
+        working-directory: ./todo-list/web
         env:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "http://localhost:3333"
         run: npm run build
 
       - name: Start application
-        working-directory: /web
+        working-directory: ./todo-list/web
         env:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "http://localhost:3333"
