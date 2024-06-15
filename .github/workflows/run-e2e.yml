@@ -38,21 +38,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cypress-
       - name: Install dependencies
-        working-directory: ./todo-list/web
+        working-directory: /todo-list/web
         run: pnpm install
 
       - name: Install Cypress if missing
         run: npx cypress install
 
       - name: Build application
-        working-directory: ./todo-list/web
+        working-directory: /todo-list/web
         env:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "http://localhost:3333"
         run: npm run build
 
       - name: Start application
-        working-directory: ./todo-list/web
+        working-directory: /todo-list/web
         env:
           APP_URL: "http://localhost:3000"
           NEXT_PUBLIC_API_BASE_URL: "http://localhost:3333"
