@@ -3,6 +3,7 @@ describe('Register  user', () => {
     cy.visit('/sign-in')
 
     cy.get('a[href^="/sing-up"]').first().click()
+    cy.location('pathname').should('include', '/sing-up')
 
     const username = `messi_${Date.now()}`
 
