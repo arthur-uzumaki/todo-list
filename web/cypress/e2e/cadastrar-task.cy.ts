@@ -1,12 +1,9 @@
 describe('cadastrar task', () => {
+  beforeEach(() => {
+    cy.login('ronaldo', '123mudar')
+  })
+
   it('should be able cadastrar task', () => {
-    cy.visit('/sign-in')
-
-    cy.get('input#username').type('ronaldo')
-    cy.get('input#password').type('123mudar')
-
-    cy.get('form').first().submit()
-
     cy.get('a[href^="/tasks/cadastrar"]').first().click()
 
     cy.location('pathname').should('include', 'tasks/cadastrar')

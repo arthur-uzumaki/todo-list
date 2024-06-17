@@ -1,12 +1,7 @@
 describe('search for tasks', () => {
   beforeEach(() => {
-    cy.visit('/sign-in')
+    cy.login('ronaldo', '123mudar')
 
-    cy.location('pathname').should('include', '/sign-in')
-    cy.get('input#username').type('ronaldo')
-    cy.get('input#password').type('123mudar')
-
-    cy.get('form').first().submit()
     cy.location('pathname', { timeout: 10000 }).should('equal', '/')
   })
   it('should be able search for tasks', () => {
