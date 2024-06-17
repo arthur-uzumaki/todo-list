@@ -16,7 +16,7 @@ export function Profile() {
     <>
       <span>Olá 🖐️,{username} </span>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger asChild id="dropdown-menu-trigger">
           <Avatar className="w-8 h-8">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
